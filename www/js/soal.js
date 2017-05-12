@@ -54,12 +54,12 @@ $ ('document').ready(function(){
 		var ns = $('#nosoal').html();
 		var nxn = parseInt(ns)+1;
 		var nis = localStorage.getItem('nis');
-		$.getJSON('http://rusiamee.000webhostapp.com/biologi/soal.php?b='+bab+'&n='+nxn, function (data){
+		$.getJSON('http://rusiamee.000webhostapp.com/biologi/soal.php?b='+bab+'&n='+nxn+"&nis="+nis, function (data){
 			//wadah dari id soal
 			$("#soal li").remove ();
 			$.each(data,function(index,soal){
 				if(parseInt(soal.n) == 0){
-					$.ajax({url:"http://rusiamee.000webhostapp.com/biologi/nilai.php",success: function(nilai){
+					$.ajax({url:"http://rusiamee.000webhostapp.com/biologi/nilai.php?nis="+nis,success: function(nilai){
 					$('#soal').append("<li>"+
 					"<p>"+nilai+"</p>"+
 					"<a href='bab.html'>Selesai</a>"+
